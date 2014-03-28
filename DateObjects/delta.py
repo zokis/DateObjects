@@ -2,20 +2,13 @@ import calendar
 
 from datetime import date, timedelta
 
-from .dateobjects import Date
+from .dateobjects import Date, PartDate
 
 
-class Delta(object):
-
-    def __init__(self, v):
-        setattr(self, self.inner, v)
+class Delta(PartDate):
 
     def __neg__(self):
         return self.__class__(-getattr(self, self.inner))
-
-    def __repr__(self):
-        name = self.__class__.__name__
-        return "%s(%d)" % (name, getattr(self, self.inner))
 
     def __sub__(self, other):
         value = getattr(self, self.inner)

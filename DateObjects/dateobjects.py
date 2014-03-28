@@ -10,6 +10,24 @@ class PartDate(object):
     def __int__(self):
         return getattr(self, self.inner)
 
+    def __eq__(self, other):
+        return int(self) == int(other)
+
+    def __lt__(self, other):
+        return int(self) < int(other)
+
+    def __le__(self, other):
+        return int(self) <= int(other)
+
+    def __ne__(self, other):
+        return int(self) != int(other)
+
+    def __gt__(self, other):
+        return int(self) > int(other)
+
+    def __ge__(self, other):
+        return int(self) >= int(other)
+
     def __repr__(self):
         return "%s(%d)" % (self.__class__.__name__, self)
 
@@ -95,7 +113,7 @@ class Date(object):
     @day.setter
     def day(self, day):
         new_day = int(day)
-        date(int(self._year), int(self._month), new_day)
+        date(self._year, self._month, new_day)
         self._day = new_day
 
     @property
@@ -105,7 +123,7 @@ class Date(object):
     @month.setter
     def month(self, month):
         new_month = int(month)
-        date(int(self._year), new_month, int(self._day))
+        date(self._year, new_month, self._day)
         self._month = new_month
 
     @property
@@ -115,7 +133,7 @@ class Date(object):
     @year.setter
     def year(self, year):
         new_year = int(year)
-        date(new_year, int(self._month), int(self._day))
+        date(new_year, self._month, self._day)
         self._year = new_year
 
     def get_last_day_of_month(self):
@@ -144,3 +162,21 @@ class Date(object):
 
     def __sub__(self, other):
         return other - self
+
+    def __eq__(self, other):
+        return self.to_datetime() == other.to_datetime()
+
+    def __lt__(self, other):
+        return self.to_datetime() < other.to_datetime()
+
+    def __le__(self, other):
+        return self.to_datetime() <= other.to_datetime()
+
+    def __ne__(self, other):
+        return self.to_datetime() != other.to_datetime()
+
+    def __gt__(self, other):
+        return self.to_datetime() > other.to_datetime()
+
+    def __ge__(self, other):
+        return self.to_datetime() >= other.to_datetime()
