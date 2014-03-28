@@ -91,13 +91,6 @@ False
 True
 >>> d1.is_last(Month(2), year=Year(2020))
 False
->>> d1
-Date(1991, 12, 31)
->>> d1.is_leap()
-False
->>> d1.year = 2020
->>> d1.is_leap()
-True
 ```
 
 Month Examples:
