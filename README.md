@@ -7,7 +7,7 @@ Date Objects
 Examples:
 
 Date Examples:
-```
+```python
 >>> from DateObjects import Date
 >>> from datetime import date
 >>> d1 = Date(1991, 10, 15)
@@ -58,7 +58,7 @@ datetime.date(2020, 12, 31)
 ```
 
 Day Examples:
-```
+```python
 >>> from DateObjects import Day
 >>> Day(0)
 Traceback (most recent call last):
@@ -101,7 +101,7 @@ True
 ```
 
 Month Examples:
-```
+```python
 >>> from DateObjects import Month
 >>> Month(90)
 Traceback (most recent call last):
@@ -132,7 +132,7 @@ False
 ```
 
 Year Examples:
-```
+```python
 >>> from DateObjects import Year
 >>> y1 = Year(1991)
 >>> y2 = Year(1992)
@@ -155,7 +155,7 @@ True
 ```
 
 Delta Examples:
-```
+```python
 >>> from DateObjects import Date, DayDelta, MonthDelta, YearDelta
 >>> d = Date(1992, 2, 28)
 >>> d
@@ -180,4 +180,6 @@ Date(1992, 2, 29)
 Date(1992, 2, 27)
 >>> DayDelta(-1) + d
 Date(1992, 2, 27)
+>>> d + MonthDelta(10) + YearDelta(100) + DayDelta(100)
+Date(2093, 4, 7)
 ```
