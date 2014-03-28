@@ -6,90 +6,178 @@ Date Objects
 
 Examples:
 
+Date Examples:
 ```
->>> from DateObjects import Year, Month, Day, Date
+>>> from DateObjects import Date
 >>> from datetime import date
 >>> d1 = Date(1991, 10, 15)
->>> y = Year(1991)
->>> m = Month(10)
+>>> d2 = Date(datetime=date(1991, 10, 25))
+>>> from DateObjects import Day, Month, Year
 >>> d = Day(25)
->>> d2 = Date(y, m, d)
->>> d3 = Date(datetime=date(1991, 10, 25))
+>>> m = Month(10)
+>>> y = Year(1991)
+>>> d3 = Date(y, m, d)
 >>> d1, d2, d3
 (Date(1991, 10, 15), Date(1991, 10, 25), Date(1991, 10, 25))
->>> 
->>> d1.to_datetime()
-datetime.date(1991, 10, 15)
->>> d1.day, d1.month, d1.year
-(Day(15), Month(10), Year(1991))
->>> d1.is_first_day()
+>>> d1 == d2
 False
+>>> d2 == d3
+True
+>>> d1 < d2
+True
+>>> d1 <= d2
+True
+>>> d1 != d2
+True
+>>> d1 >= d2
+False
+>>> d1 > d2
+False
+>>> d1.month = 12
+>>> d1.month
+Month(12)
+>>> d1.month = Month(12)
+>>> d1.month
+Month(12)
 >>> d1.is_first_month()
 False
->>> d1.is_last_day()
-False
 >>> d1.is_last_month()
+True
+>>> d1.day = 31
+>>> d1.is_first_day()
 False
+>>> d1.is_last_day()
+True
 >>> d1.is_leap()
 False
->>> d4 = Date(2020, 1, 1)
->>> d4.is_first_day()
+>>> d1.year = 2020
+>>> d1.is_leap()
 True
->>> d4.is_first_month()
-True
->>> d4.is_leap()
-True
->>> d4.month = Month(12)
->>> d4
-Date(2020, 12, 1)
->>> d4.is_last_month()
-True
->>> d4.month = 12
->>> d4.month
-Month(12)
->>> d4.month.is_last()
-True
->>> d4.is_last_month()
-True
->>> d4.month = 13
+>>> d1.to_datetime()
+datetime.date(2020, 12, 31)
+```
+
+Day Examples:
+```
+>>> from DateObjects import Day
+>>> Day(0)
 Traceback (most recent call last):
   File "<input>", line 1, in <module>
-  File "DateObjects/dateobjects.py", line 108, in month
-    date(int(self._year), new_month, int(self._day))
-ValueError: month must be in 1..12
->>> Day(100)
+  File "DateObjects/dateobjects.py", line 82, in __init__
+    raise ValueError('day must be in 1..31')
+ValueError: day must be in 1..31
+>>> d1 = Day(10)
+>>> d2 = Day(25)
+>>> d1 == d2
+False
+>>> d1 < d2
+True
+>>> d1 <= d2
+True
+>>> d1 > d2
+False
+>>> d1 >= d2
+False
+>>> d1 != d2
+True
+>>> d1, d2
+(Day(10), Day(25))
+>>> d1.is_first()
+False
+>>> d1.is_last()
+False
+>>> d1 = Day(28)
+>>> d1.is_last(Month(2))
+True
+>>> d1.is_last(Month(2), year=Year(2020))
+False
+>>> d1
+Date(1991, 12, 31)
+>>> d1.is_leap()
+False
+>>> d1.year = 2020
+>>> d1.is_leap()
+True
+```
+
+Month Examples:
+```
+>>> from DateObjects import Month
+>>> Month(90)
 Traceback (most recent call last):
   File "<input>", line 1, in <module>
   File "DateObjects/dateobjects.py", line 64, in __init__
-    raise ValueError('day must be in 1..31')
-ValueError: day must be in 1..31
->>> Month(100)
-Traceback (most recent call last):
-  File "<input>", line 1, in <module>
-  File "DateObjects/dateobjects.py", line 46, in __init__
     raise ValueError('month must be in 1..12')
 ValueError: month must be in 1..12
->>> d4
-Date(2020, 12, 1)
->>> d4 + YearDelta(20)
-Date(2040, 12, 1)
->>> YearDelta(20) + d4
-Date(2040, 12, 1)
->>> d4 + YearDelta(-20)
-Date(2000, 12, 1)
->>> d4 - YearDelta(20)
-Date(2000, 12, 1)
->>> d4 = d4 - MonthDelta(10)
->>> d4
-Date(2020, 2, 1)
->>> d4 + DayDelta(28)
-Date(2020, 2, 29)
->>> d4 += MonthDelta(10)
->>> d4
-Date(2020, 12, 1)
->>> d4 + DayDelta(28)
-Date(2020, 12, 29)
->>> d4 + DayDelta(100) + MonthDelta(10) + YearDelta(10)
-Date(2032, 1, 11)
->>> 
+>>> m1 = Month(10)
+>>> m2 = Month(12)
+>>> m1, m2
+(Month(10), Month(12))
+>>> m1 > m2
+False
+>>> m1 >= m2
+False
+>>> m1 < m2
+True
+>>> m1 <= m2
+True
+>>> m1 != m2
+True
+>>> m1 == m2
+False
+>>> m1.is_first()
+False
+>>> m1.is_last()
+False
+```
+
+Year Examples:
+```
+>>> from DateObjects import Year
+>>> y1 = Year(1991)
+>>> y2 = Year(1992)
+>>> y1.is_leap()
+False
+>>> y2.is_leap()
+True
+>>> y1 > y2
+False
+>>> y1 >= y2
+False
+>>> y1 < y2
+True
+>>> y1 <= y2
+True
+>>> y1 == y2
+False
+>>> y1 != y2
+True
+```
+
+Delta Examples:
+```
+>>> from DateObjects import Date, DayDelta, MonthDelta, YearDelta
+>>> d = Date(1992, 2, 28)
+>>> d
+Date(1992, 2, 28)
+>>> d + DayDelta(1)
+Date(1992, 2, 29)
+>>> d + DayDelta(2)
+Date(1992, 3, 1)
+>>> d + MonthDelta(2)
+Date(1992, 4, 28)
+>>> d + YearDelta(2)
+Date(1994, 2, 28)
+>>> d
+Date(1992, 2, 28)
+>>> d + DayDelta(-1)
+Date(1992, 2, 27)
+>>> d - DayDelta(1)
+Date(1992, 2, 27)
+>>> DayDelta(1) + d
+Date(1992, 2, 29)
+>>> DayDelta(1) - d
+Date(1992, 2, 27)
+>>> DayDelta(-1) + d
+Date(1992, 2, 27)
 ```
