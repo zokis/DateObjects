@@ -4,11 +4,17 @@ from .utils import get_days_of_february, r
 
 class PartDate(object):
 
-    def __init__(self, v):
-        setattr(self, self.inner, int(v))
+    def __init__(self, value):
+        self.set_inner(value)
+
+    def get_inner(self):
+        return getattr(self, self.inner)
+
+    def set_inner(self, value):
+        setattr(self, self.inner, value)
 
     def __int__(self):
-        return getattr(self, self.inner)
+        return int(self.get_inner())
 
     def __eq__(self, other):
         return int(self) == int(other)
@@ -58,8 +64,8 @@ class Month(PartDate):
         12: r(31),
     }
 
-    def __init__(self, day):
-        super(Month, self).__init__(day)
+    def __init__(self, month):
+        super(Month, self).__init__(month)
         if self._month <= 0 or self._month >= 13:
             raise ValueError('month must be in 1..12')
 
