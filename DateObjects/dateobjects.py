@@ -5,7 +5,7 @@ from .utils import get_days_of_february, r
 class PartDate(object):
 
     def __init__(self, v):
-        setattr(self, self.inner, v)
+        setattr(self, self.inner, int(v))
 
     def __int__(self):
         return getattr(self, self.inner)
