@@ -1,28 +1,27 @@
 # coding: utf-8
 from setuptools import setup
-import os
+
+version = __import__('dateobjects').__version__
 
 
-README = os.path.join(os.path.dirname(__file__), 'README.md')
-
-setup(name='date-objects',
-      version='1.0',
-      description='helper for manipulating dates.',
-      long_description=open(README).read(),
-      author="Marcelo Fonseca Tambalo", author_email="marcelo.zokis@gmail.com",
-      py_modules=['DateObjects'],
-      zip_safe=False,
-      platforms='any',
-      include_package_data=True,
-      classifiers=[
-          'Development Status :: 5 - Production/Stable',
-          'Framework :: Django',
-          'Framework :: Flask',
-          'Intended Audience :: Developers',
-          'License :: OSI Approved :: MIT License',
-          'Natural Language :: English',
-          'Operating System :: OS Independent',
-          'Programming Language :: Python',
-          'Topic :: Software Development :: Libraries',
-      ],
-      url='https://github.com/zokis/DateObjects/',)
+setup(
+    name='dateobjects',
+    version=version,
+    description='helper for manipulating dates.',
+    url='https://github.com/zokis/DateObjects/',
+    author='Marcelo Fonseca Tambalo',
+    author_email='marcelo.zokis@gmail.com',
+    license='WTFL',
+    packages=['dateobjects'],
+    include_package_data=True,
+    zip_safe=False,
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ],
+)
