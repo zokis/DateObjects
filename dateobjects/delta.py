@@ -49,7 +49,7 @@ class MonthDelta(Delta):
             day = min(int(other.day), calendar.monthrange(year, month)[1])
             return Date(year, month, day)
         except:
-            return super(YearDelta, self).__add__(other)
+            return super(MonthDelta, self).__add__(other)
 
 
 class DayDelta(Delta):
@@ -60,4 +60,4 @@ class DayDelta(Delta):
             new_date = date(other.year, other.month, other.day) + timedelta(days=self._days)
             return Date(new_date.year, new_date.month, new_date.day)
         except:
-            return super(YearDelta, self).__add__(other)
+            return super(DayDelta, self).__add__(other)

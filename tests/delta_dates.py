@@ -1,7 +1,7 @@
 import unittest
 
 
-from DateObjects import Date, Year, DayDelta, MonthDelta, YearDelta
+from dateobjects import Date, Year, DayDelta, MonthDelta, YearDelta
 
 
 class TestDayDeltaDate(unittest.TestCase):

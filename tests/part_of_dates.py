@@ -2,7 +2,7 @@ import unittest
 
 from datetime import date
 
-from DateObjects import Date, Day, Month, Year
+from dateobjects import Date, Day, Month, Year
 
 
 class TestDayOperations(unittest.TestCase):

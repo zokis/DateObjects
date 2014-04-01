@@ -1,6 +1,6 @@
 import unittest
 
-from DateObjects import DayDelta, MonthDelta, YearDelta
+from dateobjects import DayDelta, MonthDelta, YearDelta
 
 
 class TestDayDeltaOperations(unittest.TestCase):
