@@ -1,7 +1,9 @@
 Date-Objects
 ============
 
-Date Objects
+[![Build Status](https://travis-ci.org/zokis/DateObjects.svg?branch=master)](https://travis-ci.org/zokis/DateObjects)
+
+Date Objects 
 
 
 Examples:
