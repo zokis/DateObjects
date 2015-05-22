@@ -10,11 +10,11 @@ Examples:
 
 Date Examples:
 ```python
->>> from DateObjects import Date
+>>> from dateobjects import Date
 >>> from datetime import date
 >>> d1 = Date(1991, 10, 15)
 >>> d2 = Date(datetime=date(1991, 10, 25))
->>> from DateObjects import Day, Month, Year
+>>> from dateobjects import Day, Month, Year
 >>> d = Day(25)
 >>> m = Month(10)
 >>> y = Year(1991)
@@ -61,7 +61,7 @@ datetime.date(2020, 12, 31)
 
 Day Examples:
 ```python
->>> from DateObjects import Day
+>>> from dateobjects import Day
 >>> Day(0)
 Traceback (most recent call last):
   File "<input>", line 1, in <module>
@@ -97,7 +97,7 @@ False
 
 Month Examples:
 ```python
->>> from DateObjects import Month
+>>> from dateobjects import Month
 >>> Month(90)
 Traceback (most recent call last):
   File "<input>", line 1, in <module>
@@ -128,7 +128,7 @@ False
 
 Year Examples:
 ```python
->>> from DateObjects import Year
+>>> from dateobjects import Year
 >>> y1 = Year(1991)
 >>> y2 = Year(1992)
 >>> y1.is_leap()
@@ -151,7 +151,7 @@ True
 
 Delta Examples:
 ```python
->>> from DateObjects import Date, DayDelta, MonthDelta, YearDelta
+>>> from dateobjects import Date, DayDelta, MonthDelta, YearDelta
 >>> d = Date(1992, 2, 28)
 >>> d
 Date(1992, 2, 28)
