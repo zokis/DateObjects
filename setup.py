@@ -7,7 +7,8 @@ version = __import__('dateobjects').__version__
 setup(
     name='dateobjects',
     version=version,
-    description='helper for manipulating dates.',
+    description='dateobjects is a helper to manipulate dates.',
+    long_description='dateobjects is a helper to manipulate dates.',
     url='https://github.com/zokis/DateObjects/',
     author='Marcelo Fonseca Tambalo',
     author_email='marcelo.zokis@gmail.com',
@@ -15,6 +16,7 @@ setup(
     packages=['dateobjects'],
     include_package_data=True,
     zip_safe=False,
+    platforms='any',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
