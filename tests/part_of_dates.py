@@ -120,6 +120,27 @@ class TestYearOperations(unittest.TestCase):
 
 class TestDateOperations(unittest.TestCase):
 
+    def test_repr(self):
+        self.assertEqual(repr(Date(1991, 10, 25)), 'Date(1991, 10, 25)')
+
+    def test_init_datetime(self):
+        self.assertEqual(Date(datetime=date(1991, 10, 25)), Date(1991, 10, 25))
+
+    def test_set_day(self):
+        date = Date(1991, 10, 25)
+        with self.assertRaises(ValueError):
+            date.day = 66
+
+    def test_set_month(self):
+        date = Date(1991, 10, 25)
+        with self.assertRaises(ValueError):
+            date.month = 66
+
+    def test_set_year(self):
+        date = Date(1991, 10, 25)
+        with self.assertRaises(ValueError):
+            date.year = -66
+
     def test_eq(self):
         self.assertEqual(Date(1991, 10, 25), Date(1991, 10, 25))
 
