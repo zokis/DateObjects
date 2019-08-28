@@ -29,7 +29,7 @@ class YearDelta(Delta):
 
     def __add__(self, other):
         try:
-            return Date(int(other.year)+self._years, other.month, other.day)
+            return Date(int(other.year) + self._years, other.month, other.day)
         except ValueError:
             new_date = date(int(other.year), int(other.month), int(other.day))
             new_date = new_date + (date(new_date.year + self._years, 1, 1) - date(new_date.year, 1, 1))
@@ -44,11 +44,11 @@ class MonthDelta(Delta):
     def __add__(self, other):
         try:
             month = int(other.month) + self._months - 1
-            year = int(other.year) + month / 12
+            year = int(int(other.year) + month / 12)
             month = month % 12 + 1
             day = min(int(other.day), calendar.monthrange(year, month)[1])
             return Date(year, month, day)
-        except:
+        except Exception:
             return super(MonthDelta, self).__add__(other)
 
 
@@ -59,5 +59,5 @@ class DayDelta(Delta):
         try:
             new_date = date(other.year, other.month, other.day) + timedelta(days=self._days)
             return Date(new_date.year, new_date.month, new_date.day)
-        except:
+        except Exception:
             return super(DayDelta, self).__add__(other)

@@ -1,8 +1,8 @@
 import unittest
 
-from delta_dates import *
-from delta_operations import *
-from part_of_dates import *
+from tests.delta_dates import *  # noqa
+from tests.delta_operations import *  # noqa
+from tests.part_of_dates import *  # noqa
 
 
 if __name__ == '__main__':
